@@ -1,41 +1,59 @@
 ---
 layout: default
-title: Front-end development stuff and more
-description: Articles on front-end development, CSS, HTML, JavaScript and more.
+title: Home
 ---
 
+{% if paginator.previous_page %}
+	<h1 class='content-subhead'>Page {{paginator.page}}</h1>
+{% else %}
+	<h1 class='content-subhead'>Recent posts</h1>
+{% endif %}
+
 {% for post in paginator.posts %}
-<article class="post">
-  <header>
-    <time datetime="{{ post.date | date: "%Y-%m-%d" }}" class="post__time">
-      <small>{{ post.date | date_to_string }}</small>
-    </time>
-    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  </header>
-  {{ post.excerpt }}
-</article>
+<section class='post'>
+	<header class='post-header'>
+		<h2 class='post-title'>
+			<a href="{{ post.url }}">{{ post.title }}</a>
+		</h2>
+
+		<p class='post-meta'>
+			Posted on {{ post.date | date_to_string }}
+		</p>
+	</header>
+
+	<div class='post-description'>
+		{{ post.content | preview }}
+
+		<p><a href='{{ post.url }}'>Continue reading &rarr;</a></p>
+	</div>
+</section>
 {% endfor %}
 
-<ul class="pagination text-center">
-  <li class="pagination__prev">
-    {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-      <a href="/" class="btn">Previous</a>
-    {% else %}
-      <a href="/page{{paginator.previous_page}}" class="btn">Previous</a>
-    {% endif %}
-    {% else %}
-      <span class="btn btn--disabled">Previous</span>
-    {% endif %}
-  </li>
-  <li class="pagination__status">
-    Page: {{ paginator.page }} of {{ paginator.total_pages }}
-  </li>
-  <li class="pagination__next">
-    {% if paginator.next_page %}
-      <a href="/page{{paginator.next_page}}" class="btn">Next</a>
-    {% else %}
-      <span class="btn btn--disabled">Next</span>
-    {% endif %}
-  </li>
-</ul>
+{% if paginator.previous_page == nil %}
+	<h1 class='content-subhead'>Older posts</h1>
+	<div class='post-description'>
+		<ul class='older-posts'>
+			{% for post in site.posts limit:6 offset: 3 %}
+				<li><a href='{{post.url}}'>{{post.title}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}
+
+<p style='text-align:center; margin-top: 30px;'>
+	{% if paginator.previous_page %}
+		{% if paginator.previous_page == 1 %}
+			<a href='/'>&larr; Previous page</a>
+		{% else %}
+			<a href='/page{{paginator.previous_page}}/'>&larr; Previous page</a>
+		{% endif %}
+	{% endif %}
+
+	{% if paginator.next_page and paginator.previous_page %}
+		|
+	{% endif %}
+
+	{% if paginator.next_page %}
+		<a href='/page{{paginator.next_page}}/'>Next page &rarr;</a>
+	{% endif %}
+</p>

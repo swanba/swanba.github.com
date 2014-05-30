@@ -1,56 +1,30 @@
 ---
 layout: default
-comments: true
 ---
 
-{% capture abs_url %}{{ site.abs_url }}{{ page.url }}{% endcapture %}
+<section class='post'>
+	<header class='post-header'>
+		<h2 class='post-title'> {{ page.title }} </h2>
+		<p class='post-meta'>
+			Posted on <time class='date' datetime='{{ page.date | date: "%Y-%m-%dT00:00:00+01:00" }}'>{{ page.date | date_to_string }}</time>
+		</p>
+	</header>
 
-<article class="single-post">
+		<div class='post-description'>
+			{{ content }}
+		</div>
+</section>
 
-  <time datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post__time">
-    <small>{{ page.date | date_to_string }}</small>
-  </time>  
+<div id='comments'>
+	<div id='disqus_thread'></div>
+	<script type='text/javascript'>
+		var disqus_shortname = 'savjee';
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
 
-  {{ content }}
-
-  <p>
-    Share this on: 
-    <a href="//twitter.com/intent/tweet?text={{ page.title | xml_escape | uri_escape }}&amp;url={{ abs_url }}&amp;via=catalinred" target="_blank">Twitter</a> &bull; 
-    <a href="//plusone.google.com/_/+1/confirm?hl=en&amp;url={{ abs_url }}" target="_blank">Google+</a> &bull; 
-    <a href="//facebook.com/sharer/sharer.php?u={{ abs_url }}" target="_blank">Facebook</a>
-  </p>
-
-  <hr class="bold">
-  <div class="grid">
-    <div class="grid__col--45 grid__col--push10">
-    {% if page.previous %}
-      <a href="{{ page.previous.url }}" rel="prev" title="{{ page.previous.title }}" class="btn btn--full text-ellipsis">
-        <i class="fa fa-arrow-left"></i> {{ page.previous.title }}
-      </a>
-    {%endif%}
-    </div>
-    <div class="grid__col--45">
-    {% if page.next %}
-      <a href="{{ page.next.url }}" rel="prev" title="{{ page.next.title }}" class="btn btn--full text-ellipsis">
-        <i class="fa fa-arrow-right"></i> {{ page.next.title }} 
-      </a>
-    {%endif%}
-    </div>
-  </div>
-  <hr class="bold">
-
-  {% if page.comments %}
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_shortname = 'redteamdesign',
-          disqus_title = "{{ page.title }}",
-          disqus_url = "{{ abs_url }}";
-      (function() {
-          var dsq = document.createElement('script'); dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>   
-  {% endif %}   
-
-</article>
+	<noscript>Please enable JavaScript to view the comments</noscript>
+</div>
