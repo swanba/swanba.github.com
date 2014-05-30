@@ -1,14 +1,7 @@
 ---
-layout: page
-title: 404 - Page not found
+layout: default
+title: Page not found
 ---
 
-<p>Oops. Seems like the page you're looking for doesn't exist anymore...</p>
-
-<p>Looking for a recent post?</p>
-
-<ul class='list-reduced-padding'>
-	{% for post in site.posts limit:7 %}
-		<li><a href='{{post.url}}'>{{ post.title }}</a></li>
-	{% endfor %}
-</ul>
+<p><strong>Sorry</strong>, it looks like that page doesn't exist, please head
+    back to <a href="/">the home page</a>.</p>

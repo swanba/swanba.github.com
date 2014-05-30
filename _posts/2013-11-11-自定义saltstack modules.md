@@ -1,7 +1,13 @@
 ---
+author: Red
+comments: true
+date: 2014-03-03 08:00
 layout: post
-title:  自定义saltstack modules
-quote: 自定义saltstack modules
+slug: moving-from-wordpress-to-jekyll
+title: 自定义saltstack modules
+description: How I decided to move from WordPress to Jekyll. It was fun to build and lots to learn.
+categories:
+- Miscellaneous
 ---
 
 ###自定义saltstack modules

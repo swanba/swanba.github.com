@@ -1,7 +1,9 @@
-markdown: redcarpet
-markdown_ext: markdown,mkd,mkdn,md
+name: RedTeamDesign
+description: "Articles on front-end development, CSS, HTML, JavaScript and more."
+markdown: rdiscount
 pygments: true
-permalink: /:year/:month/:title/
-safe: false
-exclude: ['s3_website.yml']
-paginate: 3
+permalink: /:title
+paginate: 10
+excerpt_separator: <!-- more -->
+exclude: [rtd.sublime-project, rtd.sublime-workspace, CNAME, Gruntfile.js, package.json, README.md]
+abs_url: http://www.red-team-design.com
