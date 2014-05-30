@@ -1,5 +1,5 @@
 ---
-author: Red
+author: Amos
 comments: true
 date: 2014-01-20 06:00:35+00:00
 layout: post
