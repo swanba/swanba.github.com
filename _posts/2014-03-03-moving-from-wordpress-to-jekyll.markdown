@@ -1,5 +1,6 @@
 ---
 author: Red
+encoding: UTF-8
 comments: true
 date: 2014-03-03 08:00
 layout: post
