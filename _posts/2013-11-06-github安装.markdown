@@ -3,7 +3,7 @@ author: amos
 comments: true
 date: 2013-11-06
 layout: post
-slug: git
+slug: gitbub安装
 title: Github安装
 description: 安装git
 wordpress_id: 1122
